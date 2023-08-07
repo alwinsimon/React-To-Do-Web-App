@@ -4,13 +4,13 @@ import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
-const ToDoList = ({taskDetails}) => {
+const ToDoList = ({taskDetails, toggleTaskCompletionStatus}) => {
   
   return (
 
     <div className='ToDoItemsListView'>
 
-      <p>{taskDetails.task}</p>
+      <p onClick={()=>toggleTaskCompletionStatus(taskDetails.id)} className={ `${ taskDetails.completed ? "completed-tasks" : "" }` } >{taskDetails.task}</p>
 
       <div>
 

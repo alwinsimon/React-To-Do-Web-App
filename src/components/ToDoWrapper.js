@@ -24,6 +24,12 @@ const ToDoWrapper = () => {
 
   }
 
+  const changeTaskCompletionStatus = (taskId) => {
+
+    setToDoList(toDoList.map((individualTask)=> individualTask.id === taskId ? {...individualTask, completed: !individualTask.completed} : individualTask));
+
+  }
+
   return (
     
     <div className="ToDoWrapper">
@@ -34,7 +40,7 @@ const ToDoWrapper = () => {
 
       {toDoList.map( (toDoListItem, index) => (
 
-        <ToDoList taskDetails={toDoListItem} key={index} />
+        <ToDoList taskDetails={toDoListItem} key={index} toggleTaskCompletionStatus={changeTaskCompletionStatus} />
       
       ))}
 
