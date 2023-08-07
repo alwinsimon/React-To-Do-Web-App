@@ -1,7 +1,19 @@
 import React from 'react'
+import ToDoForm from './ToDoForm';
 
-export const ToDoWrapper = () => {
+const ToDoWrapper = () => {
+
   return (
-    <div>ToDoWrapper</div>
-  )
+
+    <div className='ToDoWrapper'>
+
+      <ToDoForm/>
+
+    </div>
+
+  );
+
 }
+
+
+export default ToDoWrapper;
