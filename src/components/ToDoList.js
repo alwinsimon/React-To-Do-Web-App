@@ -4,7 +4,7 @@ import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
-const ToDoList = ({taskDetails, toggleTaskCompletionStatus}) => {
+const ToDoList = ({taskDetails, toggleTaskCompletionStatus, deleteTask}) => {
   
   return (
 
@@ -15,7 +15,7 @@ const ToDoList = ({taskDetails, toggleTaskCompletionStatus}) => {
       <div>
 
         <FontAwesomeIcon icon={faPenToSquare} />
-        <FontAwesomeIcon icon={faTrash} />
+        <FontAwesomeIcon icon={faTrash} onClick={()=>deleteTask(taskDetails.id)} />
 
       </div>
 
