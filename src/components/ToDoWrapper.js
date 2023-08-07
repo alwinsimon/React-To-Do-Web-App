@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import ToDoForm from './ToDoForm';
 import ToDoList from './ToDoList';
 import {v4 as uuidv4} from 'uuid';
+import EditToDoForm from './EditToDoForm';
 uuidv4();
 
 const ToDoWrapper = () => {
@@ -36,29 +37,44 @@ const ToDoWrapper = () => {
   
   }
 
+  const editIndividualTask = (taskId) => {
 
+    setToDoList(toDoList.map((individualTask)=> individualTask.id === taskId ? {...individualTask, isEditing: !(individualTask.isEditing)} : individualTask));
+  
+  }
 
+  const modifyIndividualToDoTask = (editToDoFormSubmission, taskId) => {
+
+    setToDoList(toDoList.map((individualTask) => individualTask.id === taskId ? {...individualTask, task: editToDoFormSubmission, isEditing: !(individualTask.isEditing) } : individualTask))
+  
+  }
 
 
 
 
 
   return (
-    
     <div className="ToDoWrapper">
-      
+
       <h1>My To-Do List</h1>
 
       <ToDoForm addToDo={addToDo} />
 
-      {toDoList.map( (toDoListItem, index) => (
+      {toDoList.map((toDoListItem, index) =>
+        
+        toDoListItem.isEditing ? (
 
-        <ToDoList taskDetails={toDoListItem} key={index} toggleTaskCompletionStatus={changeTaskCompletionStatus} deleteTask={deleteIndividualTask} />
-      
-      ))}
+          <EditToDoForm editToDo={modifyIndividualToDoTask} taskDetails={toDoListItem} />
+        
+        ) : (
+
+          <ToDoList taskDetails={toDoListItem} key={index} toggleTaskCompletionStatus={changeTaskCompletionStatus} editTask={editIndividualTask} deleteTask={deleteIndividualTask} />
+
+        )
+
+      )}
 
     </div>
-
   );
 
 }
