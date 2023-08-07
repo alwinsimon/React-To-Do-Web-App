@@ -9,10 +9,20 @@ const ToDoForm = ({addToDo}) => {
   const handleToDoFormSubmission = (e) => {
     
     e.preventDefault();
-    
-    addToDo(formValue);
 
-    setFormValue("");
+    if( formValue === ""){
+
+      // Prevent form submission when there is no value entered in the form
+      
+      return;
+
+    }else{
+
+      addToDo(formValue);
+
+      setFormValue("");
+
+    }
 
   }
 
